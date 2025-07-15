@@ -8,17 +8,19 @@ let handler = async (m, { conn, args }) => {
     let totalCommands = Object.values(global.plugins).filter((v) => v.help && v.tags).length
     
     let txt = `
-Hola! Soy *${botname}* (｡•̀ᴗ-)✧
-Aquí tienes la lista de comandos
-╭┈ ↷
-│ᰔᩚ Cliente » @${userId.split('@')[0]}
-│❀ Modo » Publico
-│✦ Bot » ${(conn.user.jid == global.conn.user.jid ? 'Principal 🅥' : 'Prem Bot 🅑')}
-│ⴵ Activada » ${uptime}
-│✰ Usuarios » ${totalreg}
-│✧ Comandos » ${totalCommands}
-│🜸 Baileys » Multi Device
-╰─────────────────
+Cusl está más mejor 
+¡Hola! Soy *${botname}* (｡•̀ᴗ-)✧  
+Aquí tienes el panel de información:
+
+╭─ ❍
+│👤 Cliente: @${userId.split('@')[0]}
+│🌐 Modo: Público
+│🤖 Bot: ${(conn.user.jid == global.conn.user.jid ? 'Principal 🅥' : 'Secundario 🅑')}
+│⏱️ Activa desde: ${uptime}
+│👥 Usuarios registrados: ${totalreg}
+│📚 Comandos disponibles: ${totalCommands}
+│📡 Plataforma: Baileys (Multi-Device)
+╰───────────────
 Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 
 • :･ﾟ⊹˚• \`『 Info-Bot 』\` •˚⊹:･ﾟ•
