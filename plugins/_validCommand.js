@@ -1,5 +1,6 @@
 //código hecho por Angelithoxyz no quites créditos 
-//
+// canal oficial 
+//https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
 import similarity from 'string-similarity'
 
 export async function before(m) {
