@@ -8,33 +8,28 @@ let staff = `ᥫ᭡ *EQUIPO DE AYUDANTES* ❀
 
 ❍ *Creador:*
 
-ᰔᩚ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜
+ᰔᩚ Dev.Angel.Xyz.Li
 > 🜸 Rol » *Creador*
-> ✧ GitHub » https://github.com/The-King-Destroy
+> ✧ GitHub » https://github.com/Angelithoxz
 
 ❒ *Colaboradores:*
 
-ᰔᩚ 𝓔𝓶𝓶𝓪 𝓥𝓲𝓸𝓵𝓮𝓽𝓼 𝓥𝓮𝓻𝓼𝓲ó𝓷 
+ᰔᩚ Barboza
 > 🜸 Rol » *Developer*
-> ✧ GitHub » https://github.com/Elpapiema
+> ✧ GitHub » https://github.com/Elrebelde1
 
 ᰔᩚ Niño Piña
 > 🜸 Rol » *Developer*
 > ✧ GitHub » https://github.com/WillZek
 
-✧ ☆꧁༒ĹєǤ𝒆𝐧𝐃༒꧂☆
+✧ Izumi
 > 🜸 Rol » *Developer*
-> ✧ GitHub » https://github.com/Diomar-s
+> ✧ GitHub » https://github.com/Izumi-kzx
 
-ᰔᩚ I'm Fz' (Tesis)
+✧ Neo Tokio
 > 🜸 Rol » *Developer*
-> ✧ GitHub » https://github.com/FzTeis
-
-ᰔᩚ Legna
-> 🜸 Rol » *Mini-Dev* 
-> ✧ GitHub » https://github.com/Legna-chan
-`
-await conn.sendFile(m.chat, img, 'yuki.jpg', staff.trim(), m)
+> ✧ GitHub » https://github.com/TOKIO5025`
+await conn.sendFile(m.chat, img, 'nino.jpg', staff.trim(), m)
 }
   
 handler.help = ['staff']
