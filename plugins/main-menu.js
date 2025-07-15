@@ -61,6 +61,12 @@ let handler = async (m, { conn }) => {
 │ 💎 Tu límite: *${limit}*
 │ 🔋 Uptime: *${uptime}*
 │ 🤖 Tipo: ${botOfc}
+ 「 🌐 ENLACES 」───⬣
+│ 📢 Canal oficial:
+│ https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
+│ 
+│ 🌟 Apóyame con una estrella:
+│ https://github.com/Angelithoxz/Nino-Nakano
 ╰──────────────⬣\n`
 
   // COMANDOS POR CATEGORÍA
@@ -74,14 +80,7 @@ let handler = async (m, { conn }) => {
   }
 
   // EXTRAS (Canal, GitHub, Créditos)
-  text += `
-╭───「 🌐 ENLACES 」───⬣
-│ 📢 Canal oficial:
-│ https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
-│ 
-│ 🌟 Apóyame con una estrella:
-│ https://github.com/Angelithoxz/Nino-Nakano
-╰──────────────⬣`
+  text += `'
 
   // CONTENIDO DE VIDEO FINAL
   let channelRD = {
