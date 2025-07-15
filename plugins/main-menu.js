@@ -79,9 +79,6 @@ let handler = async (m, { conn }) => {
     text += '╰──────────────⬣\n'
   }
 
-  // EXTRAS (Canal, GitHub, Créditos)
-  text += `'
-
   // CONTENIDO DE VIDEO FINAL
   let channelRD = {
     id: '120363374826926142@newsletter',
