@@ -1,29 +1,24 @@
 import moment from 'moment-timezone'
 
-const emojiMap = {
-  sticker: '🖼', figu: '🎴', yt: '📥', play: '🎶', ping: '📶', info: 'ℹ️',
-  lolicon: '👧', loli: '👧', ai: '🧠', menu: '📜', help: '❓', calc: '🧮',
-  game: '🎮', owner: '👑', group: '🛡', jadibot: '✨', tiktok: '🎵', gpt: '💬'
-}
-
-const categories = {
-  '🖼 STICKERS': ['sticker', 'figu'],
-  '🚀 DESCARGAS': ['yt', 'play', 'descarga', 'descargar', 'tiktok', 'media'],
-  '🎮 JUEGOS': ['game', 'juego'],
-  '📚 BUSCADORES': ['ai', 'gpt', 'ia'],
-  '🧰 HERRAMIENTAS': ['ping', 'info', 'calc'],
-  '👑 OWNER': ['owner', 'restart', 'ban'],
-  '🛠 RPG': ['minar', 'trabajar', 'aventura'],
-  '🧪 OTROS': []
-}
-
-function getAutoGroup(cmdName) {
-  for (let [group, keywords] of Object.entries(categories)) {
-    if (keywords.some(k => cmdName.toLowerCase().includes(k))) {
-      return group
-    }
-  }
-  return '🧪 OTROS'
+const tagsMap = {
+  main: 'ℹ️ INFO',
+  jadibot: '✨ SUB BOT',
+  downloader: '🚀 DESCARGAS',
+  game: '🎮 JUEGOS',
+  gacha: '🌟 GACHA RPG',
+  rg: '🟢 REGISTRO',
+  group: '🛡 GRUPO',
+  nable: '🎛️ ENABLE/DISABLE',
+  nsfw: '🔞 +18 NSFW',
+  buscadores: '🔍 BUSCADORES',
+  sticker: '🎴 STICKERS',
+  econ: '📦 ECONOMÍA',
+  convertidor: '🎈 CONVERTIDORES',
+  logo: '🎀 LOGOS',
+  tools: '🧰 HERRAMIENTAS',
+  randow: '🎲 RANDOM',
+  efec: '🎤 EFECTOS AUDIO',
+  owner: '👑 OWNER'
 }
 
 let handler = async (m, { conn }) => {
@@ -43,38 +38,52 @@ let handler = async (m, { conn }) => {
     : `*Sub Bot de:* wa.me/${global.conn?.user?.jid?.split('@')[0]}`
 
   const grouped = {}
+  const plugins = Object.values(global.plugins).filter(p => !p.disabled)
 
-  const plugins = Object.values(global.plugins).filter(p => !p.disabled && p.command)
   for (const plugin of plugins) {
     const cmds = Array.isArray(plugin.command) ? plugin.command : [plugin.command]
+    if (!cmds) continue
+    const tagList = Array.isArray(plugin.tags) ? plugin.tags : []
+    const tag = tagList[0] || '__otros__'
+    if (!grouped[tag]) grouped[tag] = []
     for (const cmd of cmds) {
-      if (!cmd) continue
-      const cmdName = typeof cmd === 'string' ? cmd.replace(/^\.?/, '').split(' ')[0] : ''
-      const emoji = emojiMap[cmdName] || '🔹'
-      const group = getAutoGroup(cmdName)
-      grouped[group] = grouped[group] || []
-      grouped[group].push(`${emoji} .${cmdName}`)
+      if (typeof cmd !== 'string') continue
+      grouped[tag].push(`🔹 .${cmd}`)
     }
   }
 
-  let text = `╭───「 💖 𝗠𝗘𝗡𝗨 」───⬣
-│ Hola ${name}, soy *${botname}* 👋
+  // CABECERA
+  let text = `╭───「 💖 *MENÚ PRINCIPAL* 」───⬣
+│ 👤 Hola *${name}*, soy *${botname}*
 │ 📅 Fecha: *${fecha}*
 │ ⏰ Hora: *${hora}* (🇵🇪)
-│ 👥 Registrados: *${totalreg}*
+│ 👥 Usuarios: *${totalreg}*
 │ 💎 Tu límite: *${limit}*
 │ 🔋 Uptime: *${uptime}*
 │ 🤖 Tipo: ${botOfc}
 ╰──────────────⬣\n`
 
-  for (let [group, cmds] of Object.entries(grouped)) {
-    text += `\n╭─〔 ${group} 〕─⬣\n`
-    for (let c of cmds.sort()) {
-      text += `│ ${c}\n`
+  // COMANDOS POR CATEGORÍA
+  for (const tag of Object.keys(grouped)) {
+    const section = tagsMap[tag] || '🧪 OTROS'
+    text += `\n╭─〔 ${section} 〕─⬣\n`
+    for (const cmd of grouped[tag]) {
+      text += `│ ${cmd}\n`
     }
     text += '╰──────────────⬣\n'
   }
 
+  // EXTRAS (Canal, GitHub, Créditos)
+  text += `
+╭───「 🌐 ENLACES 」───⬣
+│ 📢 Canal oficial:
+│ https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
+│ 
+│ 🌟 Apóyame con una estrella:
+│ https://github.com/Angelithoxz/Nino-Nakano
+╰──────────────⬣`
+
+  // CONTENIDO DE VIDEO FINAL
   let channelRD = {
     id: '120363374826926142@newsletter',
     name: 'Nino Nakano✨️'
@@ -82,7 +91,7 @@ let handler = async (m, { conn }) => {
 
   let banner = 'https://telegra.ph/file/16391c31883e2717b3c7a.jpg'
   let redes = 'https://loli-web-five.vercel.app'
-  let textbot = `✨ Disfruta de todos mis comandos, ${name}.\nPuedes ver más en el canal oficial.`
+  let textbot = `✨ Disfruta de todos mis comandos, ${name}.\nSíguenos en el canal oficial y apóyanos en GitHub.`
 
   await conn.sendMessage(m.chat, {
     video: { url: 'https://files.catbox.moe/q8nw6b.mp4' },
