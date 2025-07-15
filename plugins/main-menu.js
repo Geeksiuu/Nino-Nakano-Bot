@@ -61,7 +61,7 @@ let handler = async (m, { conn }) => {
 │ 💎 Tu límite: *${limit}*
 │ 🔋 Uptime: *${uptime}*
 │ 🤖 Tipo: ${botOfc}
- 「 🌐 ENLACES 」───⬣
+    「 🌐 ENLACES 」
 │ 📢 Canal oficial:
 │ https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
 │ 
