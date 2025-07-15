@@ -44,7 +44,7 @@ global.nameqr = '𝐍𝐢𝐧𝐨 𝐍𝐚𝐤𝐚𝐧𝐨 𝐕2'
 global.namebot = '✿◟𝐍𝐢𝐧𝐨 𝐁𝐨𝐭◞✿'
 global.sessions = 'Sessions'
 global.jadi = 'JadiBots' 
-global.yukiJadibts = true
+global.ninoJadibts = true
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
