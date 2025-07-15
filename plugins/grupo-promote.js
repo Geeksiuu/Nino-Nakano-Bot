@@ -1,37 +1,49 @@
-var handler = async (m, { conn,usedPrefix, command, text }) => {
+var handler = async (m, { conn, usedPrefix, command, text }) => {
+  let number;
 
-if (isNaN(text) && !text.match(/@/g)){
+  if (!text && !m.quoted) {
+    return conn.reply(m.chat, `📌 *¿Eh?*  
+Debes mencionar o responder a alguien si quieres que lo haga admin~ 💅`, m);
+  }
 
-} else if (isNaN(text)) {
-var number = text.split`@`[1]
-} else if (!isNaN(text)) {
-var number = text
-}
+  if (isNaN(text)) {
+    if (text.includes('@')) {
+      number = text.split('@')[1];
+    }
+  } else {
+    number = text;
+  }
 
-if (!text && !m.quoted) return conn.reply(m.chat, `${emoji} Debes mencionar a un usuario para poder promoverlo a administrador.`, m)
-if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, `${emoji} Debe de responder o mensionar a una persona para usar este comando.`, m)
+  if (!number && m.quoted) {
+    number = m.quoted.sender.split('@')[0];
+  }
 
-try {
-if (text) {
-var user = number + '@s.whatsapp.net'
-} else if (m.quoted.sender) {
-var user = m.quoted.sender
-} else if (m.mentionedJid) {
-var user = number + '@s.whatsapp.net'
-} 
-} catch (e) {
-} finally {
-conn.groupParticipantsUpdate(m.chat, [user], 'promote')
-conn.reply(m.chat, `${done} Fue agregado como admin del grupo con exito.`, m)
-}
+  if (!number) {
+    return conn.reply(m.chat, `🙃 *Nop~* No encontré a nadie válido para promover.`, m);
+  }
 
-}
-handler.help = ['promote']
-handler.tags = ['grupo']
-handler.command = ['promote','darpija', 'promover']
-handler.group = true
-handler.admin = true
-handler.botAdmin = true
-handler.fail = null
+  if (number.length > 13 || number.length < 10) {
+    return conn.reply(m.chat, `⚠️ *Ese número no es válido, baka...* 😤`, m);
+  }
 
-export default handler
+  let user = number + '@s.whatsapp.net';
+
+  try {
+    await conn.groupParticipantsUpdate(m.chat, [user], 'promote');
+    conn.reply(m.chat, `🎀 *¡Listo~!*  
+@${number} ahora es admin del grupo. ¡Más te vale que no abuses de tu poder! 😌`, m, { mentions: [user] });
+  } catch (e) {
+    conn.reply(m.chat, `❌ *¡Oops!* No pude hacer admin a esa persona...  
+¿Estás segura de que tengo permisos suficientes? 😔`, m);
+  }
+};
+
+handler.help = ['promote'];
+handler.tags = ['grupo'];
+handler.command = ['promote', 'darpija', 'promover'];
+handler.group = true;
+handler.admin = true;
+handler.botAdmin = true;
+handler.fail = null;
+
+export default handler;
