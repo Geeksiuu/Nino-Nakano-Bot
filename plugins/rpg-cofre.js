@@ -1,14 +1,15 @@
 const handler = async (m, { isPrems, conn }) => {
   if (!global.db.data.users[m.sender]) {
-    throw `${emoji4} Usuario no encontrado.`;
+    throw `🌸 *¿Quién eres tú?* No estás en mi base de datos... ¡Regístrate primero, tontito~!* 😾`;
   }
 
-  const lastCofreTime = global.db.data.users[m.sender].lastcofre;
+  const lastCofreTime = global.db.data.users[m.sender].lastcofre || 0;
   const timeToNextCofre = lastCofreTime + 86400000;
 
   if (Date.now() < timeToNextCofre) {
     const tiempoRestante = timeToNextCofre - Date.now();
-    const mensajeEspera = `${emoji3} Ya reclamaste tu cofre\n⏰️ Regresa en: *${msToTime(tiempoRestante)}* para volver a reclamar.`;
+    const mensajeEspera = `💢 *¡Ya te di un cofrecito hoy, ¿no es suficiente?!*  
+⏳ Vuelve en *${msToTime(tiempoRestante)}*, no seas tan desesperado, baka~ 😤💗`;
     await conn.sendMessage(m.chat, { text: mensajeEspera }, { quoted: m });
     return;
   }
@@ -26,22 +27,26 @@ const handler = async (m, { isPrems, conn }) => {
   global.db.data.users[m.sender].lastcofre = Date.now();
 
   const texto = `
-╭━〔 Cσϝɾҽ Aʅҽαƚσɾισ 〕⬣
-┃📦 *Obtienes Un Cofre*
-┃ ¡Felicidades!
-╰━━━━━━━━━━━━⬣
+╭━━ 🎁 𝑪𝒐𝒇𝒓𝒆 𝑫𝒆 𝑵𝒊𝒏𝒐 💕 ━━╮
+┃ *¡Tadaaa~!* Cofrecito especial entregado 💝
+┃ ¿No te emocionas al ver mis regalos? Eres raro...
+╰━━━━━━━━━━━━━━━━━━━━━⬣
 
-╭━〔 Nυҽʋσʂ Rҽƈυɾʂσʂ 〕⬣
-┃ *${dia} ${moneda}* 💸
-┃ *${tok} Tokens* ⚜️
-┃ *${ai} Diamantes* 💎
-┃ *${expp} Exp* ✨
-╰━━━━━━━━━━━━⬣`;
+╭── 🌟 𝑹𝒆𝒄𝒐𝒎𝒑𝒆𝒏𝒔𝒂𝒔 𝒄𝒐𝒏 𝒂𝒎𝒐𝒓 ──╮
+┃ 💸 *Moneditas lindas:* ${dia} ${moneda}
+┃ ⚜️ *Tokens mágicos:* ${tok}
+┃ 💎 *Diamantes brillantes:* ${ai}
+┃ ✨ *Exp ganada (¡qué pro!):* ${expp}
+╰━━━━━━━━━━━━━━━━━━━━━⬣
+
+🌸 *No te acostumbres tanto a mis cofres...*  
+¡Pero si eres bueno tal vez mañana te dé otro~!* 😚💕`;
 
   try {
-    await conn.sendFile(m.chat, img, 'yuki.jpg', texto, fkontak);
+    await conn.sendFile(m.chat, img, 'cofre_nino.jpg', texto, fkontak);
   } catch (error) {
-    throw `${msm} Ocurrió un error al enviar el cofre.`;
+    throw `😿 *¡Hmpf! Algo falló al entregarte el cofre...*  
+Tal vez no merecías tanto cariño hoy...`;
   }
 };
 
@@ -54,15 +59,14 @@ handler.register = true;
 
 export default handler;
 
+// ⏰ Formateador de tiempo estilo Nino
 function msToTime(duration) {
-  const milliseconds = parseInt((duration % 1000) / 100);
   let seconds = Math.floor((duration / 1000) % 60);
   let minutes = Math.floor((duration / (1000 * 60)) % 60);
   let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-  hours = (hours < 10) ? '0' + hours : hours;
-  minutes = (minutes < 10) ? '0' + minutes : minutes;
-  seconds = (seconds < 10) ? '0' + seconds : seconds;
+  hours = hours < 10 ? '0' + hours : hours;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
 
-  return `${hours} Horas ${minutes} Minutos`;
+  return `${hours}h ${minutes}m`;
 }
