@@ -1,54 +1,54 @@
 import ytdl from 'ytdl-core';
 import ytSearch from 'yt-search';
-import fetch from 'node-fetch';
 import fs from 'fs';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return m.reply(`✧ 𝐃𝐞𝐛𝐞𝐬 𝐞𝐬𝐜𝐫𝐢𝐛𝐢𝐫 𝐞𝐥 𝐧𝐨𝐦𝐛𝐫𝐞 𝐝𝐞 𝐮𝐧𝐚 𝐜𝐚𝐧𝐜𝐢ó𝐧\n\n✦ 𝐄𝐣𝐞𝐦𝐩𝐥𝐨:\n${usedPrefix + command} secret base`);
+  if (!text) {
+    return conn.reply(m.chat, `✧ 𝐃𝐞𝐛𝐞𝐬 𝐞𝐬𝐜𝐫𝐢𝐛𝐢𝐫 𝐞𝐥 𝐧𝐨𝐦𝐛𝐫𝐞 𝐝𝐞 𝐮𝐧𝐚 𝐜𝐚𝐧𝐜𝐢ó𝐧\n\n✦ 𝐄𝐣𝐞𝐦𝐩𝐥𝐨:\n${usedPrefix + command} secret base`, m);
+  }
 
   try {
-    let search = await ytSearch(text);
-    let video = search.videos[0];
+    const search = await ytSearch(text);
+    const video = search.videos[0];
 
-    if (!video) return m.reply('✧ 𝐍𝐨 𝐬𝐞 𝐞𝐧𝐜𝐨𝐧𝐭𝐫ó 𝐥𝐚 𝐜𝐚𝐧𝐜𝐢𝐨́𝐧.');
+    if (!video) return conn.reply(m.chat, '✧ 𝐍𝐨 𝐬𝐞 𝐞𝐧𝐜𝐨𝐧𝐭𝐫ó 𝐧𝐢𝐧𝐠𝐮𝐧 𝐫𝐞𝐬𝐮𝐥𝐭𝐚𝐝𝐨.', m);
 
-    let url = video.url;
-    let title = video.title;
-    let thumb = video.thumbnail;
-    let duration = video.timestamp;
+    const url = video.url;
+    const title = video.title;
 
-    let audioStream = ytdl(url, { filter: 'audioonly', quality: 'highestaudio' });
-
-    let filename = `audio_${Date.now()}.mp3`;
-    let filepath = `/tmp/${filename}`;
-    const writeStream = fs.createWriteStream(filepath);
-
-    audioStream.pipe(writeStream);
-
-    writeStream.on('finish', async () => {
-      await conn.sendMessage(m.chat, {
-        document: fs.readFileSync(filepath),
-        fileName: `${title}.mp3`,
-        mimetype: 'audio/mpeg',
-        caption: `🎧 𝐓í𝐭𝐮𝐥𝐨: ${title}\n⏱️ 𝐃𝐮𝐫𝐚𝐜𝐢ó𝐧: ${duration}\n📎 𝐄𝐧𝐥𝐚𝐜𝐞: ${url}`
-      }, { quoted: m });
-
-      fs.unlinkSync(filepath);
+    const stream = ytdl(url, {
+      filter: 'audioonly',
+      quality: 'highestaudio',
     });
 
-    writeStream.on('error', err => {
+    const filename = `/tmp/${title}.mp3`;
+    const file = fs.createWriteStream(filename);
+    stream.pipe(file);
+
+    file.on('finish', async () => {
+      await conn.sendMessage(m.chat, {
+        document: fs.readFileSync(filename),
+        fileName: `${title}.mp3`,
+        mimetype: 'audio/mpeg',
+        caption: `🎧 𝐓𝐢𝐭𝐮𝐥𝐨: ${title}\n📎 𝐄𝐧𝐥𝐚𝐜𝐞: ${url}`
+      }, { quoted: m });
+
+      fs.unlinkSync(filename);
+    });
+
+    file.on('error', (err) => {
       console.error(err);
-      m.reply('❌ 𝐎𝐜𝐮𝐫𝐫𝐢ó 𝐮𝐧 𝐞𝐫𝐫𝐨𝐫 𝐚𝐥 𝐝𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐫 𝐞𝐥 𝐚𝐮𝐝𝐢𝐨.');
+      conn.reply(m.chat, '❌ 𝐇𝐮𝐛𝐨 𝐮𝐧 𝐞𝐫𝐫𝐨𝐫 𝐚𝐥 𝐠𝐮𝐚𝐫𝐝𝐚𝐫 𝐞𝐥 𝐚𝐫𝐜𝐡𝐢𝐯𝐨.', m);
     });
 
   } catch (e) {
     console.error(e);
-    m.reply('❌ 𝐄𝐫𝐫𝐨𝐫 𝐚𝐥 𝐛𝐮𝐬𝐜𝐚𝐫 𝐨 𝐝𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐫 𝐞𝐥 𝐚𝐮𝐝𝐢𝐨.');
+    conn.reply(m.chat, '❌ 𝐍𝐨 𝐬𝐞 𝐩𝐮𝐝𝐨 𝐝𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐫 𝐞𝐥 𝐚𝐮𝐝𝐢𝐨.', m);
   }
 };
 
 handler.command = ['play', 'playaudio'];
-handler.help = ['playaudio <canción>'];
+handler.help = ['play <canción>'];
 handler.tags = ['downloader'];
 
 export default handler;
