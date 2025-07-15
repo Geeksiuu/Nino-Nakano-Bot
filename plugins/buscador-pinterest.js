@@ -1,48 +1,71 @@
-import axios from 'axios'
-import baileys from '@whiskeysockets/baileys'
+import axios from 'axios';
+const {
+  generateWAMessageContent,
+  generateWAMessageFromContent,
+  proto
+} = (await import("@whiskeysockets/baileys"))["default"];
 
-let handler = async (m, { conn, text }) => {
-  if (!text) return m.reply(`❀ Por favor, ingresa lo que deseas buscar por Pinterest.`)
-
-  try {
-    m.react('🕒')
-    let results = await pins(text)
-
-    if (!results.length) return conn.reply(m.chat, `✧ No se encontraron resultados para "${text}".`, m)
-
-    const medias = results.slice(0, 10).map(img => ({ type: 'image', data: { url: img.hd } }))
-
-    await conn.sendSylphy(m.chat, medias, {
-      caption: `❀  Pinterest  -  Search  ❀\n\n✧ Búsqueda » "${text}"\n✐ Resultados » ${medias.length}\n\n${dev}`,
-      quoted: m
-    })
-
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
-  } catch (error) {
-    conn.reply(m.chat, `⚠︎ Error:\n\n${error.message}`, m)
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) {
+    return conn.reply(m.chat, `💗 *¿Y qué se supone que voy a buscar sin que me digas nada...?*  
+Escribe algo para que busque en Pinterest, tonto~ 😤`, m);
   }
-}
 
-handler.help = ['pinterest']
-handler.command = ['pinterest', 'pin']
-handler.tags = ['dl']
+  let query = text + " hd";
+  await m.react("🔎");
+  conn.reply(m.chat, `🌸 *Buscando tus imágenes súper cute~*  
+No te emociones tanto, baka~ 💅`, m);
 
-export default handler
-
-const pins = async (query) => {
   try {
-    const { data } = await axios.get(`https://api.stellarwa.xyz/search/pinterest?query=${query}`)
+    let { data } = await axios.get(`https://api.dorratz.com/v2/pinterest?q=${encodeURIComponent(query)}`);
+    let images = data.slice(0, 6).map(item => item.image_large_url);
+    let cards = [];
+    let counter = 1;
 
-    if (data?.status && data?.data?.length) {
-      return data.data.map(item => ({
-        hd: item.hd,
-        mini: item.mini
-      }))
+    for (let url of images) {
+      const { imageMessage } = await generateWAMessageContent({ image: { url } }, { upload: conn.waUploadToServer });
+      cards.push({
+        body: proto.Message.InteractiveMessage.Body.fromObject({ text: `🌺 Imagen ${counter++}` }),
+        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: "🌟 Encontrado por Nino Bot" }),
+        header: proto.Message.InteractiveMessage.Header.fromObject({ title: '', hasMediaAttachment: true, imageMessage }),
+        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
+          buttons: [{
+            name: "cta_url",
+            buttonParamsJson: JSON.stringify({
+              display_text: "✨ Ver en Pinterest",
+              Url: `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(query)}`,
+              merchant_url: `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(query)}`
+            })
+          }]
+        })
+      });
     }
 
-    return []
+    const messageContent = generateWAMessageFromContent(m.chat, {
+      viewOnceMessage: {
+        message: {
+          messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
+          interactiveMessage: proto.Message.InteractiveMessage.fromObject({
+            body: proto.Message.InteractiveMessage.Body.create({ text: `📎 *Resultado de búsqueda para:* ${query}` }),
+            footer: proto.Message.InteractiveMessage.Footer.create({ text: "🖼️ 𝙄𝙢𝙖𝙜𝙚𝙣𝙚𝙨 𝙘𝙤𝙣 𝙖𝙢𝙤𝙧 💖 𝙙𝙚 Nino-Nakano-Bot" }),
+            header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
+            carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards })
+          })
+        }
+      }
+    }, { quoted: m });
+
+    await m.react("✅");
+    await conn.relayMessage(m.chat, messageContent.message, { messageId: messageContent.key.id });
   } catch (error) {
-    console.error("Error al obtener imágenes de Pinterest:", error)
-    return []
+    console.error(error);
+    return conn.reply(m.chat, `😿 *Algo salió mal...*  
+No encontré nada o el universo está contra mí hoy~`, m);
   }
-}
+};
+
+handler.help = ["pinterest"];
+handler.tags = ["descargas"];
+handler.command = ['pinterest', 'pin'];
+
+export default handler;
