@@ -1,8 +1,3 @@
-/* 
-❀ Codígo creado por Destroy
-✧ https://github.com/The-King-Destroy/Yuki_Suou-Bot.git 
-*/
-
 import fs from 'fs'
 import path from 'path'
 
