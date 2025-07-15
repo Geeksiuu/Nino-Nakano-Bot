@@ -1,31 +1,31 @@
 import moment from 'moment-timezone'
 
 const tagsMap = {
-  main: 'ℹ️ INFO',
-  jadibot: '✨ SUB BOT',
-  downloader: '🚀 DESCARGAS',
-  game: '🎮 JUEGOS',
-  gacha: '🌟 GACHA RPG',
-  rg: '🟢 REGISTRO',
-  group: '🛡 GRUPO',
-  nable: '🎛️ ENABLE/DISABLE',
-  nsfw: '🔞 +18 NSFW',
-  buscadores: '🔍 BUSCADORES',
-  sticker: '🎴 STICKERS',
-  econ: '📦 ECONOMÍA',
-  convertidor: '🎈 CONVERTIDORES',
-  logo: '🎀 LOGOS',
-  tools: '🧰 HERRAMIENTAS',
-  randow: '🎲 RANDOM',
-  efec: '🎤 EFECTOS AUDIO',
-  owner: '👑 OWNER'
+  main: '💗 Información',
+  jadibot: '🌟 Sub Bot',
+  downloader: '📥 Descargas',
+  game: '🎮 Juegos',
+  gacha: '🎲 Gacha RPG',
+  rg: '🔰 Registro',
+  group: '👥 Grupos',
+  nable: '🎛️ Funciones',
+  nsfw: '🔞 NSFW +18',
+  buscadores: '🔎 Buscadores',
+  sticker: '🌈 Stickers',
+  econ: '💰 Economía',
+  convertidor: '🌀 Convertidores',
+  logo: '🎀 Logos Kawaii',
+  tools: '🧰 Herramientas',
+  randow: '🎁 Random',
+  efec: '🎶 Efectos de Audio',
+  owner: '👑 Creador'
 }
 
 let handler = async (m, { conn }) => {
   const userId = m.mentionedJid?.[0] || m.sender
   const user = global.db.data.users[userId] || {}
   const name = await conn.getName(userId)
-  const botname = conn.user?.name || 'Bot'
+  const botname = conn.user?.name || 'NinoBot 🌸'
   const fecha = moment.tz('America/Lima').format('DD/MM/YYYY')
   const hora = moment.tz('America/Lima').format('HH:mm:ss')
   const uptime = clockString(process.uptime() * 1000)
@@ -34,8 +34,8 @@ let handler = async (m, { conn }) => {
 
   const botTag = conn.user?.jid?.split('@')[0] || 'bot'
   const botOfc = conn.user?.id === global.conn?.user?.id
-    ? `*Bot Oficial:* wa.me/${botTag}`
-    : `*Sub Bot de:* wa.me/${global.conn?.user?.jid?.split('@')[0]}`
+    ? `💫 *Bot Oficial:* wa.me/${botTag}`
+    : `🔗 *Sub Bot de:* wa.me/${global.conn?.user?.jid?.split('@')[0]}`
 
   const grouped = {}
   const plugins = Object.values(global.plugins).filter(p => !p.disabled)
@@ -48,38 +48,43 @@ let handler = async (m, { conn }) => {
     if (!grouped[tag]) grouped[tag] = []
     for (const cmd of cmds) {
       if (typeof cmd !== 'string') continue
-      grouped[tag].push(`🔹 .${cmd}`)
+      grouped[tag].push(`🌸 .${cmd}`)
     }
   }
 
-  // CABECERA
-  let text = `╭───「 💖 *MENÚ PRINCIPAL* 」───⬣
-│ 👤 Hola *${name}*, soy *${botname}*
-│ 📅 Fecha: *${fecha}*
-│ ⏰ Hora: *${hora}* (🇵🇪)
-│ 👥 Usuarios: *${totalreg}*
-│ 💎 Tu límite: *${limit}*
-│ 🔋 Uptime: *${uptime}*
-│ 🤖 Tipo: ${botOfc}
-    「 🌐 ENLACES 」
-│ 📢 Canal oficial:
-│ https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
-│ 
-│ 🌟 Apóyame con una estrella:
-│ https://github.com/Angelithoxz/Nino-Nakano
-╰──────────────⬣\n`
+ 
+  let text = `╭─❀「 *Menú Kawaii de ${botname}* 」❀─╮
+🌼 Konichiwaa~ *${name}*~! (≧◡≦)
+💖 Soy *${botname}*, tu asistente kawaii~
 
-  // COMANDOS POR CATEGORÍA
+📅 Fecha linda: *${fecha}*
+⏰ Hora Perú: *${hora}*
+🎀 Usuarios activos: *${totalreg}*
+🍬 Tu límite de hoy: *${limit}*
+🔋 Tiempo encendida: *${uptime}*
+🤖 Estado: ${botOfc}
+
+📢 *Canal Oficial de Nino-chan*:
+https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
+
+🌟 *Regálame una estrellita en GitHub~*:
+https://github.com/Angelithoxz/Nino-Nakano
+
+💻 *Web Oficial~*:
+https://loli-web-five.vercel.app
+╰───────────────🌸╯\n`
+
+  
   for (const tag of Object.keys(grouped)) {
-    const section = tagsMap[tag] || '🧪 OTROS'
-    text += `\n╭─〔 ${section} 〕─⬣\n`
+    const section = tagsMap[tag] || '📚 Otros'
+    text += `\n╭─🎀 *${section}* 🎀─╮\n`
     for (const cmd of grouped[tag]) {
-      text += `│ ${cmd}\n`
+      text += `💫 ${cmd}\n`
     }
-    text += '╰──────────────⬣\n'
+    text += '╰───────────────🌸\n'
   }
 
-  // CONTENIDO DE VIDEO FINAL
+ 
   let channelRD = {
     id: '120363374826926142@newsletter',
     name: 'Nino Nakano✨️'
@@ -87,7 +92,7 @@ let handler = async (m, { conn }) => {
 
   let banner = 'https://telegra.ph/file/16391c31883e2717b3c7a.jpg'
   let redes = 'https://loli-web-five.vercel.app'
-  let textbot = `✨ Disfruta de todos mis comandos, ${name}.\nSíguenos en el canal oficial y apóyanos en GitHub.`
+  let textbot = `🌸 Gracias por usarme, *${name}*~\nNo olvides seguir el canal y darme amorcito en GitHub~ 💕`
 
   await conn.sendMessage(m.chat, {
     video: { url: 'https://files.catbox.moe/q8nw6b.mp4' },
