@@ -1,3 +1,4 @@
+//código creado por 🐉𝙉𝙚𝙤𝙏𝙤𝙠𝙮𝙤 𝘽𝙚𝙖𝙩𝙨
 var handler = async (m, { conn, usedPrefix, command, text }) => {
   let number;
 
