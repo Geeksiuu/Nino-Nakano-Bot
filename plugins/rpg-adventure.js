@@ -58,7 +58,7 @@ let info = `🛫 Te has aventurado en el *<${randomKingdom}>*\n` +
 `💎 *Diamantes Ganados:* ${diamonds}\n` +
 `✨ *Experiencia Ganada:* ${exp}\n` +
 `❤️ *Salud Actual:* ${user.health}`;
-await conn.sendFile(m.chat, img, 'yuki.jpg', info, fkontak);
+await conn.sendFile(m.chat, img, 'nino.jpg', info, fkontak);
 }
 
 handler.help = ['aventura', 'adventure'];
