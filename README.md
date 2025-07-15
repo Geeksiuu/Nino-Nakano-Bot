@@ -1,6 +1,6 @@
-<h1 align="center">✦ Yυƙι Sυσυ ✦</h1>
+<h1 align="center">✦ Nino Nakano V2✦</h1>
 
- <img src= "https://files.catbox.moe/om9jai.jpg">
+ <img src= "https://files.catbox.moe/bvew26.jpg">
     </p>
 
 ### **`❕️ Información importante`**
@@ -55,7 +55,7 @@ apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-git clone https://github.com/The-King-Destroy/Yuki_Suou-Bot && cd Yuki_Suou-Bot
+git clone https://github.com/Angelithoxyz/Nino-Nakano-V2 && cd Nino-Nakano-V2
 ```
 
 ```bash
@@ -81,13 +81,13 @@ npm start
 > Si después de instalar el bot en Termux se detiene (pantalla en blanco, pérdida de conexión a Internet, reinicio del dispositivo), sigue estos pasos:
 
 ❒ Abre Termux y navega al directorio del bot:
-   
+
    ```bash
-    cd Yuki_Suou-Bot
+    cd Nino-Nakano-V2 
    ```
 
 ❒ Inicia el bot nuevamente:
-  
+
    ```bash
     npm start
    ```
@@ -97,7 +97,7 @@ npm start
 > Si después de instalar el bot en Termux y iniciar la session del bot (deseas poner tu número es la lista de owner pon este comando:
 
    ```bash
-    cd Yuki_Suou-Bot && nano settings.js
+    cd Nino-Nakano-V2 && nano settings.js
    ```
 
 </details>
@@ -108,56 +108,36 @@ npm start
 <details>
  <summary><b> 🜸 Enlaces Oficiales </b></summary>
 
- * Canal Oficial  [`¡Click aquí!`](https://whatsapp.com/channel/0029VbAfPu9BqbrEMFWXKE0d)
-* Grupo Oficial [`¡Click aquí!`](https://chat.whatsapp.com/GeMUm4iACPPKRPrKBRKM8c)
-* Comunidad Oficial [`¡Click aquí!`](https://chat.whatsapp.com/I0dMp2fEle7L6RaWBmwlAa)
+ * Canal Oficial  [`¡Click aquí!`](https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x)
+* Grupo Oficial [`¡Click aquí!`](https://chat.whatsapp.com/LYLiORNWzHkIsiecvCCdgK?mode=ac_t)
+* Comunidad Oficial [`¡Click aquí!`](https://chat.whatsapp.com/HeKcGyv2idq0tMFRFGN6qL?mode=ac_t)
 </details>
 
 <details>
 <summary><b> ✰ Contáctos</b></summary>
 
-* WhatsApp: [`Aquí`](https://wa.me/522202410659)
-* Correo: [`Aquí`](thekingdestroy507@gmail.com)
+* WhatsApp: [`Aquí`](https://wa.me/51901930696)
+* Correo: [`Aquí`](angelithoxyz@gmail.com)
 
 </details>
 
 ---
 
-### **`✧ SKY ULTRA PLUS ✧`**
+### **`✧ CUERVO HOST ✧`**
 
 <a
-href="https://dash.skyultraplus.com/home"><img src="https://qu.ax/zFzXF.png" height="125px"></a>
+href="https://dash.cuervo-host.xyz"><img src="https://files.catbox.moe/t69rnd.jpg" height="125px"></a>
 
 <details>
- <summary><b> ❒ Servidor Sky Ultra Plus</b></summary>
+ <summary><b> ❒ Servidor Cuervo Host Plus</b></summary>
 
-* Dashboard : [`Dash`](https://dash.skyultraplus.com)
-* Panel : [`Panel`](https://panel.skyultraplus.com)
-* Canal de WhatsApp : [`Canal Sky`](https://whatsapp.com/channel/0029VakUvreFHWpyWUr4Jr0g)
-* Comunidad : [`Aquí`](https://chat.whatsapp.com/JPwcXvPEUwlEOyjI3BpYys)
-* Contacto : [`Gata Dios`](https://wa.me/message/B3KTM5XN2JMRD1)
+* Dashboard : [`Dash`](https://dash.cuervo-host.xyz)
+* Panel : [`Panel`](https://panel.cuervo-host.xyz)
 
 </details>
 
 ---
 
-### **` °¤ BOXMINEWORLD ¤°`**
-
-<a href="https://boxmineworld.com">
-  <img width="125px" src="https://i.imgur.com/allAyd4.png"/>
-</a>
-
-<details>
- <summary><b> ❒ Servidor BoxMineWorld</b></summary>
-
-* Pagina Oficial: [`Boxmineworld`](https://boxmineworld.com)
-* Tutorial - Crear cuenta en la Dashboard: [`Dashboard`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
-* Dashboard: [`Dash`](https://dash.boxmineworld.com)
-* Panel: [`Aquí`](https://panel.boxmineworld.com)
-* Dudas sobre el Host: [`Discord`](https://discord.gg/84qsr4v)
-* Canal de WhatsApp: [`Aquí`](https://whatsapp.com/channel/0029Va71C1q2UPBOICnxu83r)
-
-</details>
 
 ---
 
@@ -178,20 +158,15 @@ href="https://home.akirax.net"><img src="https://raw.githubusercontent.com/The-K
 
 ---
 
-### **`❀ Colaboradores`**
-<a href="https://github.com/The-King-Destroy/Yuki_Suou-Bot/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=The-King-Destroy/Yuki_Suou-Bot" /> 
-</a>
-
 ### **`ᥫ᭡ Propietario`**
-<a
-href="https://github.com/The-King-Destroy"><img src="https://github.com/The-King-Destroy.png" width="130" height="130" alt="
-ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜"/></a>
+<a href="https://github.com/Angelithoxyz">
+  <img src="https://files.catbox.moe/c0oj3h.jpg" width="130" height="130" alt="Dev.Angel.Xyz" style="border-radius: 50%;" />
+</a>
 
 ### **`🜸 Créditos`**
-<a href="https://github.com/DevAlexJs" style="display:inline-block; text-decoration: none;">
-    <img src="https://github.com/DevAlexJs.png" width="130" height="130" alt="Alex-X" style="border-radius: 50%;"/>
+<a href="https://github.com/Elrebelde1" style="display:inline-block; text-decoration: none;">
+  <img src="https://github.com/Elrebelde1.png" width="130" height="130" alt="Barboza" style="border-radius: 50%;" />
 </a>
-<a href="https://github.com/BrunoSobrino" style="display:inline-block; margin-right: 10px; text-decoration: none;">
-    <img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="Bruno Ofc" style="border-radius: 50%;"/>
+<a href="https://github.com/Izumi-kzx" style="display:inline-block; text-decoration: none; margin-left: 10px;">
+  <img src="https://github.com/Izumi-kzx.png" width="130" height="130" alt="Izumi Ofc" style="border-radius: 50%;" />
 </a>
