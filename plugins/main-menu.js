@@ -71,7 +71,7 @@ https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
 https://github.com/Angelithoxz/Nino-Nakano
 
 💻 *Web Oficial~*:
-https://loli-web-five.vercel.app
+https://ryusei-web.vercel.app/
 ╰───────────────🌸╯\n`
 
   
