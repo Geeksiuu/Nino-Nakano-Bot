@@ -53,9 +53,9 @@ let handler = async (m, { conn }) => {
   }
 
  
-  let text = `╭─❀「 *Menú Kawaii de ${botname}* 」❀─╮
+  let text = `╭─❀「 *Menú Principal de ${global.botname}* 」❀─╮
 🌼 Konichiwaa~ *${name}*~! (≧◡≦)
-💖 Soy *${botname}*, tu asistente kawaii~
+💖 Soy *${global.botname}*, tu asistente~
 
 📅 Fecha linda: *${fecha}*
 ⏰ Hora Perú: *${hora}*
