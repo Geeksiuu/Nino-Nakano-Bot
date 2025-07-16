@@ -44,7 +44,7 @@ global.nameqr = '𝐍𝐢𝐧𝐨 𝐍𝐚𝐤𝐚𝐧𝐨 𝐕2'
 global.namebot = '✿◟𝐍𝐢𝐧𝐨 𝐁𝐨𝐭◞✿'
 global.sessions = 'Sessions'
 global.jadi = 'JadiBots' 
-global.ninoJadibts = true
+global.yukiJadibts = true
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
@@ -58,7 +58,7 @@ global.etiqueta = '𝔸𝕟𝕘𝕖𝕝𝕚𝕥𝕙𝕠𝕩𝕪𝕫'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.moneda = '¥enes'
+global.moneda = 'NinoCoins'
 global.welcom1 = '❍ Edita Con El Comando setwelcome'
 global.welcom2 = '❍ Edita Con El Comando setbye'
 global.banner = 'https://files.catbox.moe/bvew26.jpg'
