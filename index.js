@@ -416,9 +416,10 @@ console.log(chalk.bold.red(`\n╭» ❍ ${jadi} ❍\n│→ OCURRIÓ UN ERROR\n�
 
 function purgeOldFiles() {
   const directories = [`./${sessions}/`, `./${jadi}/`]
+
   directories.forEach(dir => {
     if (!fs.existsSync(dir)) {
-      console.warn(chalk.yellow(`⚠️ Carpeta no encontrada: ${dir}`))
+      console.warn(chalk.hex('#FFC0CB')(`🌸⚠️ La carpeta no existe: ${dir}`))
       return
     }
 
@@ -430,17 +431,19 @@ function purgeOldFiles() {
           try {
             fs.unlinkSync(filePath)
             console.log(chalk.bold.green(
-              `\n『✔』 ARCHIVO → ${file} BORRADO CON ÉXITO\n━━━━━━━━━━━━━━━━━━━`
+              `\n🌟 ARCHIVO → ${file} \n╰✅ ¡Borrado exitosamente! ٩(｡•́‿•̀｡)۶\n━━━━━━━━━━━━━━━━━━━`
             ))
           } catch (err) {
             console.log(chalk.bold.red(
-              `\n『✘』 ARCHIVO → ${file} NO SE LOGRÓ BORRAR\n━━━━━━━━━━━━━━━━━━━\n` + err
+              `\n❌ ERROR al borrar → ${file} \n╰🚫 No se logró borrar (╥﹏╥)\n━━━━━━━━━━━━━━━━━━━\n` + err
             ))
           }
         }
       })
     } catch (err) {
-      console.log(chalk.red(`\n『✘』 ERROR LEYENDO DIRECTORIO: ${dir}\n` + err))
+      console.log(chalk.red(
+        `\n💥 Error leyendo carpeta: ${dir} \n╰🛑 Detalles: ` + err
+      ))
     }
   })
 }
