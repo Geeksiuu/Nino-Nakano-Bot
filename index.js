@@ -415,38 +415,20 @@ console.log(chalk.bold.red(`\n╭» ❍ ${jadi} ❍\n│→ OCURRIÓ UN ERROR\n�
 }}
 
 function purgeOldFiles() {
-  const directories = [`./${sessions}/`, `./${jadi}/`]
-
-  directories.forEach(dir => {
-    if (!fs.existsSync(dir)) {
-      console.warn(chalk.hex('#FFC0CB')(`🌸⚠️ La carpeta no existe: ${dir}`))
-      return
-    }
-
-    try {
-      const files = fs.readdirSync(dir)
-      files.forEach(file => {
-        if (file !== 'creds.json') {
-          const filePath = path.join(dir, file)
-          try {
-            fs.unlinkSync(filePath)
-            console.log(chalk.bold.green(
-              `\n🌟 ARCHIVO → ${file} \n╰✅ ¡Borrado exitosamente! ٩(｡•́‿•̀｡)۶\n━━━━━━━━━━━━━━━━━━━`
-            ))
-          } catch (err) {
-            console.log(chalk.bold.red(
-              `\n❌ ERROR al borrar → ${file} \n╰🚫 No se logró borrar (╥﹏╥)\n━━━━━━━━━━━━━━━━━━━\n` + err
-            ))
-          }
-        }
-      })
-    } catch (err) {
-      console.log(chalk.red(
-        `\n💥 Error leyendo carpeta: ${dir} \n╰🛑 Detalles: ` + err
-      ))
-    }
-  })
-}
+const directories = [`./${sessions}/`, `./${jadi}/`]
+directories.forEach(dir => {
+readdirSync(dir, (err, files) => {
+if (err) throw err
+files.forEach(file => {
+if (file !== 'creds.json') {
+const filePath = path.join(dir, file);
+unlinkSync(filePath, err => {
+if (err) {
+console.log(chalk.bold.red(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} NO SE LOGRÓ BORRAR\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ✘\n` + err))
+} else {
+console.log(chalk.bold.green(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} BORRADO CON ÉXITO\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))
+} }) }
+}) }) }) }
 
 function redefineConsoleMethod(methodName, filterStrings) {
 const originalConsoleMethod = console[methodName]
