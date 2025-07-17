@@ -55,7 +55,7 @@ apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-git clone https://github.com/Angelithoxyz/Nino-Nakano-V2 && cd Nino-Nakano-V2
+git clone https://github.com/Angelithoxz/Nino-Nakano-V2 && cd Nino-Nakano
 ```
 
 ```bash
@@ -83,7 +83,7 @@ npm start
 ❒ Abre Termux y navega al directorio del bot:
 
    ```bash
-    cd Nino-Nakano-V2 
+    cd Nino-Nakano
    ```
 
 ❒ Inicia el bot nuevamente:
@@ -97,7 +97,7 @@ npm start
 > Si después de instalar el bot en Termux y iniciar la session del bot (deseas poner tu número es la lista de owner pon este comando:
 
    ```bash
-    cd Nino-Nakano-V2 && nano settings.js
+    cd Nino-Nakano && nano settings.js
    ```
 
 </details>
