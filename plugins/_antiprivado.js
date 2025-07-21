@@ -1,26 +1,14 @@
-export async function before(m, { conn, isOwner, isROwner }) {
+export async function before(m, {conn, isAdmin, isBotAdmin, isOwner, isROwner}) {
   if (m.isBaileys && m.fromMe) return !0;
-  if (m.isGroup || !m.message) return !0;
-
-  const botSettings = global.db.data.settings[conn.user?.jid] || {};
-  const text = m.text || '';
-  const commandRegex = /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#%^&.©^]/gi;
-  const isCommand = commandRegex.test(text);
-
-  
-  const allowList = ['PIEDRA', 'PAPEL', 'TIJERA', 'serbot', 'jadibot'];
-  if (allowList.some(word => text.toUpperCase().includes(word))) return !0;
-
-  
-  if (m.chat.endsWith('@newsletter')) return !0;
-
-  
-  if (botSettings.antiPrivate && isCommand && !isOwner && !isROwner) {
-    await m.reply(`${emoji} Hola @${m.sender.split('@')[0]}, no puedes usar comandos en el chat privado.\n\nPor favor únete al grupo oficial:\n\n${gp1}`, false, {
-      mentions: [m.sender],
-    });
-    await conn.updateBlockStatus(m.chat, 'block');
+  if (m.isGroup) return !1;
+  if (!m.message) return !0;
+  if (m.text.includes('PIEDRA') || m.text.includes('PAPEL') || m.text.includes('TIJERA') || m.text.includes('serbot') || m.text.includes('jadibot')) return !0;
+  const chat = global.db.data.chats[m.chat];
+  const bot = global.db.data.settings[this.user.jid] || {};
+if (m.chat === '120363416409380841@newsletter') return !0
+  if (bot.antiPrivate && !isOwner && !isROwner) {
+    await m.reply(`${emoji} Hola @${m.sender.split`@`[0]}, mi creador a desactivado los comandos en los chats privados el cual serás bloqueado, si quieres usar los comandos del bot te invito a que te unas al grupo principal del bot.\n\n${gp1}`, false, {mentions: [m.sender]});
+    await this.updateBlockStatus(m.chat, 'block');
   }
-
   return !1;
 }
