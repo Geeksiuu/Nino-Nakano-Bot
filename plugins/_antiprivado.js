@@ -1,14 +1,33 @@
-export async function before(m, {conn, isAdmin, isBotAdmin, isOwner, isROwner}) {
+export async function before(m, { conn, isOwner, isROwner }) {
   if (m.isBaileys && m.fromMe) return !0;
-  if (m.isGroup) return !1;
-  if (!m.message) return !0;
-  if (m.text.includes('PIEDRA') || m.text.includes('PAPEL') || m.text.includes('TIJERA') || m.text.includes('serbot') || m.text.includes('jadibot')) return !0;
-  const chat = global.db.data.chats[m.chat];
+  if (m.isGroup || !m.message) return !0;
+
   const bot = global.db.data.settings[this.user.jid] || {};
-if (m.chat === '120363416409380841@newsletter') return !0
-  if (bot.antiPrivate && !isOwner && !isROwner) {
-    await m.reply(`${emoji} Hola @${m.sender.split`@`[0]}, mi creador a desactivado los comandos en los chats privados el cual serás bloqueado, si quieres usar los comandos del bot te invito a que te unas al grupo principal del bot.\n\n${gp1}`, false, {mentions: [m.sender]});
-    await this.updateBlockStatus(m.chat, 'block');
+  const user = global.db.data.users[m.sender];
+  const prefixRegex = /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#%^&.©^]/gi;
+  const isCommand = prefixRegex.test(m.text); 
+  const isContact = Object.keys(conn.contacts).includes(m.sender); 
+
+  const allowList = ['PIEDRA', 'PAPEL', 'TIJERA', 'serbot', 'jadibot'];
+  if (allowList.some(word => m.text?.toUpperCase().includes(word))) return !0;
+
+  if (m.chat === '120363416409380841@newsletter') return !0;
+
+  
+  if (bot.antiPrivate && isCommand && !isOwner && !isROwner && !isContact) {
+    user.warnPriv = user.warnPriv || 0;
+
+    if (user.warnPriv >= 2) {
+      await m.reply(`${emoji} Has sido bloqueado por exceder el límite de advertencias en privado.\nÚnete al grupo oficial para usar el bot:\n\n${gp1}`, false, { mentions: [m.sender] });
+      await this.updateBlockStatus(m.chat, 'block');
+      user.warnPriv = 0; 
+    } else {
+      user.warnPriv += 1;
+      await m.reply(`${emoji} Hola @${m.sender.split('@')[0]}, no está permitido usar comandos en privado.\nAdvertencia ${user.warnPriv}/3 ⚠️\n\nSi continúas, serás bloqueado.\nÚnete al grupo oficial para usar el bot:\n\n${gp1}`, false, {
+        mentions: [m.sender]
+      });
+    }
   }
+
   return !1;
 }
