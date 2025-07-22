@@ -95,7 +95,7 @@ https://ryusei-web.vercel.app/
   let textbot = `🌸 Gracias por usarme, *${name}*~\nNo olvides seguir el canal y darme amorcito en GitHub~ 💕`
 
   await conn.sendMessage(m.chat, {
-    video: { url: 'https://files.catbox.moe/q8nw6b.mp4' },
+    video: { url: 'https://files.catbox.moe/hv3oo1.mp4' },
     caption: text,
     contextInfo: {
       mentionedJid: [m.sender, userId],
