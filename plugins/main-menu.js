@@ -33,48 +33,42 @@ let handler = async (m, { conn }) => {
   const limit = user.limite || 0
 
   const botTag = conn.user?.jid?.split('@')[0] || 'bot'
-  const botOfc = conn.user?.id === global.conn?.user?.id
+  const isBotOfc = conn.user?.id === global.conn?.user?.id
+  const botStatus = isBotOfc
     ? `💫 *Bot Oficial:* wa.me/${botTag}`
     : `🔗 *Sub Bot de:* wa.me/${global.conn?.user?.jid?.split('@')[0]}`
 
-  const grouped = {}
   const plugins = Object.values(global.plugins).filter(p => !p.disabled)
+  const grouped = {}
 
   for (const plugin of plugins) {
     const cmds = Array.isArray(plugin.command) ? plugin.command : [plugin.command]
-    if (!cmds) continue
     const tagList = Array.isArray(plugin.tags) ? plugin.tags : []
     const tag = tagList[0] || '__otros__'
     if (!grouped[tag]) grouped[tag] = []
     for (const cmd of cmds) {
-      if (typeof cmd !== 'string') continue
-      grouped[tag].push(`🌸 .${cmd}`)
+      if (typeof cmd === 'string') grouped[tag].push(`🌸 .${cmd}`)
     }
   }
 
- 
-  let text = `╭─❀「 *Menú Principal de ${global.botname}* 」❀─╮
+  let text = `╭─❀「 *Menú Principal de ${botname}* 」❀─╮
 🌼 Konichiwaa~ *${name}*~! (≧◡≦)
-💖 Soy *${global.botname}*, tu asistente~
+💖 Soy *${botname}*, tu asistente~
 
 📅 Fecha linda: *${fecha}*
 ⏰ Hora Perú: *${hora}*
 🎀 Usuarios activos: *${totalreg}*
 🍬 Tu límite de hoy: *${limit}*
 🔋 Tiempo encendida: *${uptime}*
-🤖 Estado: ${botOfc}
+🤖 Estado: ${botStatus}
 
 📢 *Canal Oficial de Nino-chan*:
 https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x
-
-🌟 *Regálame una estrellita en GitHub~*:
-https://github.com/Angelithoxz/Nino-Nakano
 
 💻 *Web Oficial~*:
 https://ryusei-web.vercel.app/
 ╰───────────────🌸╯\n`
 
-  
   for (const tag of Object.keys(grouped)) {
     const section = tagsMap[tag] || '📚 Otros'
     text += `\n╭─🎀 *${section}* 🎀─╮\n`
@@ -84,15 +78,14 @@ https://ryusei-web.vercel.app/
     text += '╰───────────────🌸\n'
   }
 
- 
-  let channelRD = {
+  const channelRD = {
     id: '120363374826926142@newsletter',
     name: 'Nino Nakano✨️'
   }
 
-  let banner = 'https://telegra.ph/file/16391c31883e2717b3c7a.jpg'
-  let redes = 'https://loli-web-five.vercel.app'
-  let textbot = `🌸 Gracias por usarme, *${name}*~\nNo olvides seguir el canal y darme amorcito en GitHub~ 💕`
+  const banner = 'https://telegra.ph/file/16391c31883e2717b3c7a.jpg'
+  const redes = 'https://loli-web-five.vercel.app'
+  const textbot = `🌸 Gracias por usarme, *${name}*~\nNo olvides seguir el canal y darme amorcito~ 💕`
 
   await conn.sendMessage(m.chat, {
     video: { url: 'https://files.catbox.moe/hv3oo1.mp4' },
@@ -103,7 +96,7 @@ https://ryusei-web.vercel.app/
       forwardedNewsletterMessageInfo: {
         newsletterJid: channelRD.id,
         newsletterName: channelRD.name,
-        serverMessageId: -1,
+        serverMessageId: -1
       },
       forwardingScore: 999,
       externalAdReply: {
@@ -113,8 +106,8 @@ https://ryusei-web.vercel.app/
         sourceUrl: redes,
         mediaType: 1,
         showAdAttribution: false,
-        renderLargerThumbnail: true,
-      },
+        renderLargerThumbnail: true
+      }
     }
   }, { quoted: m })
 }
@@ -125,8 +118,8 @@ handler.command = ['menu', 'menú', 'help']
 export default handler
 
 function clockString(ms) {
-  let seconds = Math.floor((ms / 1000) % 60)
-  let minutes = Math.floor((ms / (1000 * 60)) % 60)
-  let hours = Math.floor((ms / (1000 * 60 * 60)) % 24)
-  return `${hours}h ${minutes}m ${seconds}s`
+  let h = Math.floor(ms / (1000 * 60 * 60))
+  let m = Math.floor((ms / (1000 * 60)) % 60)
+  let s = Math.floor((ms / 1000) % 60)
+  return `${h}h ${m}m ${s}s`
 }
