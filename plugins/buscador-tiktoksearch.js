@@ -9,7 +9,7 @@ const {
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return conn.reply(message.chat, "❀ Por favor, ingrese un texto para realizar una búsqueda en tiktok.", message, rcanal);
+    return conn.reply(message.chat, '🌸 *Nyaa~ escribe algo para buscar en TikTok, porfis!* 💬', message, rcanal);
   }
 
   async function createVideoMessage(url) {
@@ -29,13 +29,13 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
   }
 
   try {
-    conn.reply(message.chat, '✧ *ENVIANDO SUS RESULTADOS..*', message, {
+    await conn.reply(message.chat, '⏳ *Buscando videítos kawaii en TikTok... espera un momento* ✨', message, {
       contextInfo: { 
         externalAdReply: { 
           mediaUrl: null, 
           mediaType: 1, 
           showAdAttribution: true,
-          title: '♡  ͜ ۬︵࣪᷼⏜݊᷼𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙨⏜࣪᷼︵۬ ͜ ',
+          title: '📱💞 𝙍𝙚𝙨𝙪𝙡𝙩𝙖𝙙𝙤𝙨 𝙏𝙞𝙠𝙏𝙤𝙠 𝙠𝙖𝙬𝙖𝙞𝙞',
           body: dev,
           previewType: 0, 
           thumbnail: avatar,
@@ -45,7 +45,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
     });
 
     let results = [];
-    let { data } = await axios.get("https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=" + text);
+    let { data } = await axios.get(`https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=${encodeURIComponent(text)}`);
     let searchResults = data.data;
     shuffleArray(searchResults);
     let topResults = searchResults.splice(0, 7);
@@ -72,7 +72,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
           },
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
             body: proto.Message.InteractiveMessage.Body.create({
-              text: "✧ RESULTADO DE: " + text
+              text: `🎀 *Resultados de tu búsqueda:* “${text}”`
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
               text: dev
@@ -94,13 +94,13 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
       messageId: messageContent.key.id
     });
   } catch (error) {
-    conn.reply(message.chat, `⚠︎ *OCURRIÓ UN ERROR:* ${error.message}`, message);
+    conn.reply(message.chat, `💔 *Oops! Hubo un error kawaii:* ${error.message}`, message);
   }
 };
 
-handler.help = ["tiktoksearch <txt>"];
-handler.register = true
-handler.group = true
+handler.help = ["tiktoksearch <texto>"];
+handler.register = true;
+handler.group = true;
 handler.tags = ["buscador"];
 handler.command = ["tiktoksearch", "ttss", "tiktoks"];
 
