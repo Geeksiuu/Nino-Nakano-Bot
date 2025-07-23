@@ -545,16 +545,16 @@ let user2 = m.pushName || 'Anónimo'
 let verifyaleatorio = ['registrar', 'reg', 'verificar', 'verify', 'register'].getRandom()
 
 const msg = {
-  rowner: `『🌸』El comando *${comando}* solo puede ser usado por los *creadores oficiales del bot*~ 💖`,
-  owner: `『🌟』El comando *${comando}* está reservado para los *desarrolladores-senpai* del bot 💼`,
-  mods: `『💠』Este comando *${comando}* es solo para los *moderadores elegidos* ✨`,
-  premium: `『💎』El comando *${comando}* es solo para *usuari@s premium*~ UwU`,
-  group: `『👥』El comando *${comando}* solo se puede usar en *grupos bonitos*~ 🫶`,
-  private: `『📩』El comando *${comando}* solo se puede usar en *chat privado con el botcito* 🐾`,
-  admin: `『🔰』El comando *${comando}* es solo para los *admins del grupo*~`,
-  botAdmin: `『🤖』Nyaa~ necesito ser *admin del grupo* para usar el comando *${comando}* 💔`,
-  unreg: `『📛』Este comando *${comando}* es solo para *usuari@s registrados*\n\n📝 Regístrate con:\n> #${verifyaleatorio} ${user2}.${edadaleatoria}`,
-  restrict: `『🚫』Nya~ esta función está *desactivadita* por ahora, espera un poquito más~ 💫`
+rowner: `『✦』El comando *${comando}* solo puede ser usado por los creadores del bot.`, 
+owner: `『✦』El comando *${comando}* solo puede ser usado por los desarrolladores del bot.`, 
+mods: `『✦』El comando *${comando}* solo puede ser usado por los moderadores del bot.`, 
+premium: `『✦』El comando *${comando}* solo puede ser usado por los usuarios premium.`, 
+group: `『✦』El comando *${comando}* solo puede ser usado en grupos.`,
+private: `『✦』El comando *${comando}* solo puede ser usado al chat privado del bot.`,
+admin: `『✦』El comando *${comando}* solo puede ser usado por los administradores del grupo.`, 
+botAdmin: `『✦』Para ejecutar el comando *${comando}* debo ser administrador del grupo.`,
+unreg: `『✦』El comando *${comando}* solo puede ser usado por los usuarios registrado, registrate usando:\n> » #${verifyaleatorio} ${user2}.${edadaleatoria}`,
+restrict: `『✦』Esta caracteristica está desactivada.`
 }[type];
 if (msg) return m.reply(msg).then(_ => m.react('✖️'))}
 
