@@ -70,7 +70,7 @@ global.gp1 = 'https://chat.whatsapp.com/LYLiORNWzHkIsiecvCCdgK?mode=ac_t'
 global.comunidad1 = 'https://chat.whatsapp.com/HeKcGyv2idq0tMFRFGN6qL?mode=ac_t'
 global.channel = 'https://whatsapp.com/channel/0029Vaz6RTR0LKZIKwudX32x'
 global.channel2 = 'https://whatsapp.com/channel/0029VapUpsT9mrGcypZy141s'
-global.md = 'https://github.com/Angelithoxyz/Nino-Nakano-V2'
+global.md = 'https://github.com/Angelithoxz/Nino-Nakano'
 global.correo = 'angelithoxyz@gmail.com'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
