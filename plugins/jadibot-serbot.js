@@ -30,7 +30,7 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx =
+let rtx = 
 ┏━━━━━━━━━━━━━✦
 ┃ 〔 *⭑ ʀʏūꜱᴇɪ ᴄʟᴜʙ ⭑* 〕
 ┃         𝙎𝙀𝙍𝘽𝙊𝙏 — 𝙈𝙊𝘿𝙊 𝙌𝙍
