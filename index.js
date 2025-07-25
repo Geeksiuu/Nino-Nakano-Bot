@@ -26,6 +26,7 @@ import {makeWASocket, protoType, serialize} from './lib/simple.js'
 import {Low, JSONFile} from 'lowdb'
 import {mongoDB, mongoDBV2} from './lib/mongoDB.js'
 import store from './lib/store.js'
+import autopost from './plugins/_autopost.js'
 const {proto} = (await import('@whiskeysockets/baileys')).default
 import pkg from 'google-libphonenumber'
 const { PhoneNumberUtil } = pkg
@@ -41,13 +42,13 @@ let { say } = cfonts
 
 console.log(chalk.bold.redBright(`\n✰ Iniciando Nino Nakano V2✰\n`))
 
-say('Nino Nakano V2', {
+say('Nino V2', {
 font: 'block',
 align: 'center',
 colors: ['magentaBright']
 })
 
-say(`Developed By • Angelithoxyz`, {
+say(`Developed By • Angelithxz`, {
 font: 'console',
 align: 'center',
 colors: ['blueBright']
@@ -205,8 +206,9 @@ if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
 if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.yellow(`\n❐ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
-if (connection == 'open') {
-console.log(chalk.bold.green('\n❀ Nino Nakano V2 Conectada con éxito ❀'))
+if (connection === 'open') {
+  console.log(chalk.bold.green('\n❀ Nino Nakano V2 Conectada con éxito ❀'));
+  autopost(conn);
 }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
