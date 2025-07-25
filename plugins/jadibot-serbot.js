@@ -30,7 +30,8 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx =" ┏━━━━━━━━━━━━━✦
+let rtx = `
+┏━━━━━━━━━━━━━✦
 ┃ 〔 *⭑ ʀʏūꜱᴇɪ ᴄʟᴜʙ ⭑* 〕
 ┃         𝙎𝙀𝙍𝘽𝙊𝙏 — 𝙈𝙊𝘿𝙊 𝙌𝙍
 ┗━━━━━━━━━━━━━✦
@@ -47,9 +48,9 @@ Escanea este *Código QR* desde otro dispositivo para conectarte como un *Sub-Bo
 ⏳ *¡Este código expira en 45 segundos!*
 
 ━━━━━━━✦༺༻✦━━━━━━━
-"
+`;
 
-let rtx2 = "
+let rtx2 = `
 ┏━━━━━━━━━━━━━✦
 ┃ 〔 *⭑ ʀʏūꜱᴇɪ ᴄʟᴜʙ ⭑* 〕
 ┃       𝙎𝙀𝙍𝘽𝙊𝙏 — 𝙈𝙊𝘿𝙊 𝘾𝙊𝘿𝙀
@@ -68,7 +69,7 @@ Utiliza este *Código de Vinculación* para acceder como *Sub-Bot* de forma temp
 ⚠️ *Recomendación:* No uses tu cuenta principal para mayor seguridad.
 
 ━━━━━━━✦༺༻✦━━━━━━━
-"
+`;
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
