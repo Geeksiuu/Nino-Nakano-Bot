@@ -30,8 +30,46 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx = "*⪛✰ ↫ *SERBOT MODO QR* ↬ ✰⪜*\n\n✐ Cσɳҽxισɳ SυႦ-Bσƚ Mσԃҽ QR\n\n✰ Con otro celular o en la PC escanea este QR para convertirte en un *Sub-Bot* Temporal.\n\n\`1\` » Haga clic en los tres puntos en la esquina superior derecha\n\n\`2\` » Toque dispositivos vinculados\n\n\`3\` » Escanee este codigo QR para iniciar sesion con el bot\n\n✧ ¡Este código QR expira en 45 segundos!."
-let rtx2 = "*⪛✰ ↫ *SERBOT MODO CODE* ↬ ✰⪜*\n\n✐ Cσɳҽxισɳ SυႦ-Bσƚ Mσԃҽ Cσԃҽ\n\n✰ Usa este Código para convertirte en un *Sub-Bot* Temporal.\n\n\`1\` » Haga clic en los tres puntos en la esquina superior derecha\n\n\`2\` » Toque dispositivos vinculados\n\n\`3\` » Selecciona Vincular con el número de teléfono\n\n\`4\` » Escriba el Código para iniciar sesion con el bot\n\n✧ No es recomendable usar tu cuenta principal."
+let rtx = "
+┏━━━━━━━━━━━━━✦
+┃ 〔 *⭑ ʀʏūꜱᴇɪ ᴄʟᴜʙ ⭑* 〕
+┃         𝙎𝙀𝙍𝘽𝙊𝙏 — 𝙈𝙊𝘿𝙊 𝙌𝙍
+┗━━━━━━━━━━━━━✦
+
+*📲 Sub-Bot Temporal (Modo QR)*
+
+Escanea este *Código QR* desde otro dispositivo para conectarte como un *Sub-Bot* por tiempo limitado.
+
+✦ *Instrucciones:*
+➊ Toca los tres puntos (⋮) en la parte superior derecha.  
+➋ Selecciona *Dispositivos vinculados*.  
+➌ Escanea el QR mostrado en pantalla.
+
+⏳ *¡Este código expira en 45 segundos!*
+
+━━━━━━━✦༺༻✦━━━━━━━
+"
+
+let rtx2 = "
+┏━━━━━━━━━━━━━✦
+┃ 〔 *⭑ ʀʏūꜱᴇɪ ᴄʟᴜʙ ⭑* 〕
+┃       𝙎𝙀𝙍𝘽𝙊𝙏 — 𝙈𝙊𝘿𝙊 𝘾𝙊𝘿𝙀
+┗━━━━━━━━━━━━━✦
+
+*📄 Sub-Bot Temporal (Modo Código)*
+
+Utiliza este *Código de Vinculación* para acceder como *Sub-Bot* de forma temporal.
+
+✦ *Instrucciones:*
+➊ Toca los tres puntos (⋮) en la parte superior derecha.  
+➋ Selecciona *Dispositivos vinculados*.  
+➌ Pulsa *Vincular con número de teléfono*.  
+➍ Introduce el código que te hemos proporcionado.
+
+⚠️ *Recomendación:* No uses tu cuenta principal para mayor seguridad.
+
+━━━━━━━✦༺༻✦━━━━━━━
+"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
