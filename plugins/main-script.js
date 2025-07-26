@@ -26,7 +26,7 @@ let handler = async (m, { conn }) => {
         externalAdReply: {
           title: '✨ Nino-Nakano-MD v2.0.0 (BETA)',
           body: 'Repositorio oficial del bot',
-          thumbnailUrl: 'https://files.catbox.moe/qxi3c5.jpg',
+          thumbnailUrl: 'https://files.catbox.moe/x0s0kg.jpg',
           sourceUrl: json.html_url,
           mediaType: 1,
           renderLargerThumbnail: true
